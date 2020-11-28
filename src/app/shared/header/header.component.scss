@@ -1,0 +1,23 @@
+.mat-toolbar {
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    position: fixed;
+    z-index: 1;
+    background-color: #FFF;
+    .firstTextOnHeader {
+        border-right: 1px solid rgb(243, 241, 241);
+        color: #3893e7;
+        font-size: 15px;
+        padding-right: 15px;
+    }
+    .thenTextOnHeader {
+        color: #3893e7;
+        font-size: 15px;
+        cursor: pointer;
+    }
+    .end {
+        font-size: 100px;
+        color: rgb(206, 204, 204);
+    }
+}

@@ -1,0 +1,63 @@
+<mat-toolbar>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <span class="firstTextOnHeader ml-5"><b>AssignmentHelp</b></span>
+        <span class="thenTextOnHeader ml-5" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseenter)="menuTrigger.openMenu()">
+          <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="13px">
+            <div class="mt-2">
+              <mat-icon>description</mat-icon>
+            </div>
+            <div>
+              Assignment
+            </div>
+            <div class="mt-2">
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </div>
+          </div>
+        </span>
+
+        <mat-menu #menu="matMenu">
+            <div (mouseleave)="menuTrigger.closeMenu()">
+                <span [routerLink]="['/active-assignment']" routerLinkActive="router-link-active" mat-menu-item style="color: #3893e7; font-size: 15px;">Active Assignment</span>
+                <span mat-menu-item style="color: #3893e7; font-size: 15px;">Completed Assignment</span>
+                <span mat-menu-item style="color: #3893e7; font-size: 15px;">Expired Assignment</span>
+                <span mat-menu-item style="color: #3893e7; font-size: 15px;">Rework Assignment</span>
+            </div>
+        </mat-menu>
+        <span class="thenTextOnHeader ml-5" [routerLink]="['/new-assignment']" routerLinkActive="router-link-active">
+            <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="13px">
+              <div class="mt-2">
+                <mat-icon>add_box</mat-icon>
+              </div>
+              <div>
+                New Assignment
+              </div>
+            </div>
+        </span>
+    </div>
+
+    <div class="end mr-5" fxFlex fxLayout="row" fxLayoutAlign="end center">
+        <button mat-icon-button [matMenuTriggerFor]="menuEnd" aria-label="Example icon-button with a menu">
+        <mat-icon style="font-size: 40px;">account_circle</mat-icon>
+      </button>
+        <mat-menu #menuEnd="matMenu">
+            <button mat-menu-item>
+            <mat-icon>account_box</mat-icon>
+            <span>UserId: </span>
+          </button>
+            <button mat-menu-item>
+          <mat-icon>person_outline</mat-icon>
+          <span [routerLink]="['/profile']" routerLinkActive="router-link-active">My Profile</span>
+        </button>
+            <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span [routerLink]="['/change-password']" routerLinkActive="router-link-active" >Change Password</span>
+        </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>
+          <mat-icon>power_settings_new</mat-icon>
+          <span>Logout</span>
+        </button>
+        </mat-menu>
+    </div>
+
+</mat-toolbar>

@@ -1,0 +1,201 @@
+<div class="my-4" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <mat-card-header>
+                <mat-card-title>
+                    <h4 class="text-center"><strong>GUARANTEED HIGHER GRADE OR GET YOUR MONEY BACK!</strong><br>
+                        <small>GET HELP INSTANTLY</small>
+                    </h4>
+                </mat-card-title>
+            </mat-card-header>
+        </div>
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="center">
+            <mat-horizontal-stepper labelPosition="bottom" #stepper>
+                <mat-step [stepControl]="assignmentInfo">
+                    <div class="mt-5">
+                        <form [formGroup]="assignmentInfo" (ngSubmit)="onsubmit1()">
+                            <ng-template matStepLabel>Step 1</ng-template>
+                            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="30px">
+                                <div>
+                                    <p>Enter your email id</p>
+                                    <mat-form-field appearance="outline" [style.width.px]="370">
+                                        <mat-label>Enter your email id please</mat-label>
+                                        <input (blur)="logValidationError1()" matInput formControlName="email" placeholder="Enter your email please">
+                                        <div *ngIf="formError1.email">
+                                            <small class="text-danger">
+                          {{formError1.email}}
+                        </small>
+                                        </div>
+                                    </mat-form-field>
+
+                                </div>
+                                <div>
+                                    <p>Subject You are pursuing</p>
+                                    <mat-form-field appearance="outline" [style.width.px]="330">
+                                        <mat-label>Subject You are pursuing</mat-label>
+                                        <input (blur)="logValidationError1()" matInput formControlName="subject" class="example-right-align" placeholder="Enter your subject">
+                                        <mat-icon matPrefix>assignment</mat-icon>
+                                        <div *ngIf="formError1.subject">
+                                            <small class="text-danger">
+                        {{formError1.subject}}
+                      </small>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="55px" style="border-bottom: 1px solid rgb(240, 239, 239); padding-bottom: 30px;">
+                                <div>
+                                    <div fxLayout="column" fxLayoutAlign="space-around start">
+                                        <div>
+                                            <p>Number of pages/words you required</p>
+                                        </div>
+                                        <div>
+                                            <div fxLayout="row" fxLayoutGap="0px">
+                                                <div class="value-button" id="decrease" (click)="decrease()">
+                                                    <i class="fa fa-minus mt-2"></i>
+                                                </div>
+                                                <div>
+                                                    <mat-form-field [style.width.px]="300" appearance="outline">
+                                                        <input matInput readonly (blur)="logValidationError1()" class="text-center" [value]="wordValue">
+
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="value-button" id="increase" (click)="increase()">
+                                                    <i class="fa fa-plus mt-2"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div fxLayout="column" fxLayoutAlign="space-around">
+                                        <div>
+                                            <p>Choose your assignment deadline</p>
+                                        </div>
+                                        <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="center">
+                                            <div>
+                                                <mat-form-field appearance="outline" [style.width.px]="160">
+                                                    <input class="ml-3" (blur)="logValidationError1()" placement="top" type="text" matInput formControlName="date" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+                                                    <mat-icon matSuffix>event</mat-icon>
+                                                    <div *ngIf="formError1.date">
+                                                        <small class="text-danger">
+                                    {{formError1.date}}
+                                  </small>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                            <div>
+                                                <mat-form-field appearance="outline" [style.width.px]="160">
+                                                    <input class="" placeholder="Submission time" type="" atp-time-picker matInput (blur)="logValidationError1()" formControlName="time">
+                                                    <mat-icon matSuffix>query_builder</mat-icon>
+                                                    <div *ngIf="formError1.time">
+                                                        <small class="text-danger">
+                                    {{formError1.time}}
+                                  </small>
+                                                    </div>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="mt-5" fxLayout="row" fxLayoutAlign="end end">
+                                <button mat-raised-button matStepperNext color="primary">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </mat-step>
+                <mat-step [stepControl]="assignmentDetails">
+                    <p class="mt-4">Your Current Level Of Assignment</p>
+                    <div class="" fxLayout="row" fxLayoutAlign="space-evenly" fxLayoutGap="10px">
+                        <mat-button-toggle value="High School">High School</mat-button-toggle>
+                        <mat-button-toggle value="College">College</mat-button-toggle>
+                        <mat-button-toggle value="Diploma">Diploma</mat-button-toggle>
+                        <mat-button-toggle value="Undergraduate">Undergraduate</mat-button-toggle>
+                        <mat-button-toggle value="Graduate">Graduate</mat-button-toggle>
+                        <mat-button-toggle value="Postgraduate">Postgraduate</mat-button-toggle>
+                        <mat-button-toggle value="PhD/Doctorate">PhD/Doctorate</mat-button-toggle>
+                    </div>
+                    <form [formGroup]="assignmentDetails" (ngSubmit)="onsubmit2()">
+                        <ng-template matStepLabel>Step 2</ng-template>
+                        <div fxLayout="row" fxLayoutAlign="space-around">
+                            <div class="mt-5">
+                                <p>Reference Of Assignment..</p>
+                                <mat-form-field appearance="fill" [style.width.px]=400>
+                                    <mat-label>Select Assignment</mat-label>
+                                    <mat-select>
+                                        <mat-option *ngFor="let item of arr" [value]="item">{{item}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div class="mt-5">
+                                <p>Add your files..</p>
+                                <div class="custom-file">
+                                    <input type="file" multiple mat-input class="custom-file-input" id="customFileLang" lang="es">
+                                    <label class="custom-file-label" for="customFileLang">Add files..</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5" fxLayout="row">
+                            <div>
+                                <p>Enter your assignment description</p>
+                                <ckeditor formControlName="textBody">
+                                </ckeditor>
+                            </div>
+                        </div>
+                        <div class="mt-5" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="245px">
+                            <div>
+                                <p>Enter your contact number</p>
+                            </div>
+                            <div>
+                                <p>Best Callback Time</p>
+                            </div>
+                        </div>
+                        <div fxLayout="row" fxLayoutGap="30px">
+                            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="20px">
+                                <div>
+                                    <mat-form-field appearance="outline" [style.width.px]=120>
+                                        <mat-label>Country Code</mat-label>
+                                        <mat-select>
+                                            <mat-option *ngFor="let item of contactHeadArr" [value]="item">
+                                                {{item}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                                <div>
+                                    <mat-form-field [style.width.px]=240 appearance="outline">
+                                        <mat-label>Enter your phone number.</mat-label>
+                                        <input matInput placeholder="Enter your phn no.">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div>
+                                <mat-form-field appearance="outline" [style.width.px]=350>
+                                    <mat-label>Callback Time</mat-label>
+                                    <mat-select>
+                                        <mat-option *ngFor="let item of callBackTime" [value]="item">
+                                            {{item}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div style="border-bottom: 1px solid rgb(216, 212, 212);padding-bottom: 70px;" class="mb-5" fxLayout="column" fxLayoutAlign="start">
+                            <p>Contact number needed incase of emergency and</p>
+                            <p>receive assignment update.</p>
+                        </div>
+                        <div class="lastPara">
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="space-between" class="buttonGroup">
+                            <button mat-raised-button matStepperPrevious color='primary'>Back</button>
+                            <button mat-raised-button color="accent" [routerLink]="['/active-assignment']" routerLinkActive="router-link-active">Finish</button>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </mat-card>
+</div>

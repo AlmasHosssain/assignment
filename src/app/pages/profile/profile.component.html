@@ -1,0 +1,34 @@
+<div class="my-4" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <div class="my-5" fxLayout="row" fxLayoutAlign="space-around end" fxLayoutGap="20px">
+            <div>
+                <div style="border-bottom: 1px solid rgb(216, 213, 213);">
+                    <h2>Profile Details</h2>
+                </div>
+                <div class="mt-5" fxLayout="column" fxLayoutAlign="space-evenly ">
+                    <p>Name : Almas Hossain Antar</p>
+                    <p>Email : almas121@gmail.com</p>
+                    <p>Phone : 01521307312</p>
+                </div>
+            </div>
+            <div>
+                <div style="border-bottom: 1px solid rgb(216, 213, 213);">
+                    <h2>Edit Profile Details</h2>
+                </div>
+                <div class="mt-5" fxLayout="column" fxLayoutAlign="space-evenly end" style="font-size: 13px;">
+                    <mat-form-field appearance="outline" [style.width.px]="300">
+                        <mat-label>Enter your name</mat-label>
+                        <input matInput [placeholder]="name" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" [style.width.px]="300">
+                        <mat-label>Enter your email</mat-label>
+                        <input matInput [placeholder]="email" required>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="btnLast" fxLayout="row">
+            <button mat-raised-button color="primary">SUBMIT</button>
+        </div>
+    </mat-card>
+</div>
