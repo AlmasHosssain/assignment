@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AmazingTimePickerService } from 'amazing-time-picker';
+import { InfoPasssService } from './../../services/info-passs.service';
 
 @Component({
   selector: 'app-new-assignment',
@@ -12,6 +13,7 @@ export class NewAssignmentComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private infoServices : InfoPasssService
   ) { }
   afuConfig = {
     uploadAPI: {
@@ -48,6 +50,10 @@ export class NewAssignmentComponent implements OnInit {
   contactHeadArr = ['AU(+06)', 'IND(+99)', 'PK(+07)', 'AFG(+66)', 'AIU(+96)', 'BGU(+08)', 'QA(+86)', 'WOU(+01)', 'ZIU(+00)'];
 
   callBackTime = ['12:00 AM To 03:00 AM', '03:00 AM To 06:00 AM', '06:00 AM To 09:00 AM', '09:00 AM To 12:00 PM', '12:00 PM To 03:00 PM', '03:00 PM To 06:00 PM'];
+
+  public submittedObj={
+    assignmentInfoValue : {}
+  };
 
   ngOnInit(): void {
     this.assignmentInfo = this.fb.group({
@@ -98,11 +104,14 @@ export class NewAssignmentComponent implements OnInit {
     }
   }
   onsubmit1() {
-    this.logValidationError1();
-    console.log(this.formError1)
+      this.submittedObj.assignmentInfoValue = this.assignmentInfo.value
   }
   onsubmit2() {
+    let descriptionValue = this.assignmentDetails.value.textBody.substring(this.assignmentDetails.value.textBody.indexOf('>')+1, this.assignmentDetails.value.textBody.lastIndexOf('<'));
 
+     // this.submittedObj.assignmentDetailsValue = descriptionValue;
+      this.infoServices.passingInfo$.next(this.submittedObj);
+     localStorage.setItem('assignment',JSON.stringify(this.submittedObj));
   }
 
 }

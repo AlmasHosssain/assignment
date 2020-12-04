@@ -1,0 +1,82 @@
+<div class="my-5" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card>
+        <div fxLayout="row" fxLayoutAlign="start">
+            <div>
+                <h3>ADMIN VIEW...!</h3>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="my-4" fxLayout="row" fxLayoutAlign="end">
+            <div style="font-size: 12px;">
+                <mat-form-field appearance="outline">
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" placeholder="Search here" #input>
+                </mat-form-field>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <div class="mat-elevation-z8" fxFlex="100">
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                    <!-- ASSIGNMENT_ID Column -->
+                    <ng-container matColumnDef="ASSIGNMENT_ID">
+                        <th class="checkHead" mat-header-cell *matHeaderCellDef mat-sort-header> ASSIGNMENT_ID </th>
+                        <td class="chechOut" mat-cell *matCellDef="let row"> {{row.ASSIGNMENT_ID}} </td>
+                    </ng-container>
+
+                    <!-- SUBJECT Column -->
+                    <ng-container matColumnDef="STUDENT_NAME">
+                        <th class="checkHead" mat-header-cell *matHeaderCellDef mat-sort-header> STUDENT_NAME </th>
+                        <td class="chechOut" mat-cell *matCellDef="let row"> {{row.STUDENT_NAME}} </td>
+                    </ng-container>
+
+                    <!-- PAYMENT Column -->
+                    <ng-container matColumnDef="ASSIGNMENT_TITLE">
+                        <th class="checkHead" mat-header-cell *matHeaderCellDef mat-sort-header> ASSIGNMENT_TITLE </th>
+                        <td class="chechOut" mat-cell *matCellDef="let row">
+                            {{row.ASSIGNMENT_TITLE}} </td>
+                    </ng-container>
+
+                    <!-- ORDER_QUOTE Column -->
+                    <ng-container matColumnDef="REFERENCE">
+                        <th class="checkHead" mat-header-cell *matHeaderCellDef mat-sort-header> REFERENCE </th>
+                        <td class="chechOut" mat-cell *matCellDef="let row"> {{row.REFERENCE}} </td>
+                    </ng-container>
+
+                    <!-- DUE_DATE Column -->
+                    <ng-container matColumnDef="DUE_DATE">
+                        <th class="checkHead" mat-header-cell *matHeaderCellDef mat-sort-header> DUE DATE </th>
+                        <td class="chechOut" mat-cell *matCellDef="let row"> {{row.DUE_DATE}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="ASSIGNMENT_DETAILS">
+                        <th class="checkHead" mat-header-cell *matHeaderCellDef mat-sort-header> ASSIGNMENT_DETAILS </th>
+                        <td class="chechOut pointer" mat-cell title="View Details" *matCellDef="let row" [routerLink]="['/details']" routerLinkActive="router-link-active">
+                            <mat-icon color="primary">visibility</mat-icon>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="DELETE">
+                        <th class="pl-4" mat-header-cell *matHeaderCellDef mat-sort-header> DELETE </th>
+                        <td class="pl-4 pointer" mat-cell title="View Details" *matCellDef="let row">
+                            <mat-icon color="accent">delete_forever</mat-icon>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mt-5" fxLayout="row" fxLayoutAlign="start end">
+            <div>
+                <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </div>
+        </div>
+    </mat-card>
+</div>

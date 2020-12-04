@@ -8,6 +8,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { ChangePasswordComponent } from './../pages/change-password/change-password.component';
 import { CommonModule } from '@angular/common';
 import { DefaultComponent } from './default/default.component';
+import { DetailsComponent } from './../pages/details/details.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -29,7 +30,7 @@ import { ProfileComponent } from './../pages/profile/profile.component';
 import { SharedModule } from './../shared/shared.module';
 
 @NgModule({
-  declarations: [DefaultComponent, ActiveAssignmentComponent, NewAssignmentComponent, ProfileComponent, ChangePasswordComponent],
+  declarations: [DefaultComponent, ActiveAssignmentComponent, NewAssignmentComponent, ProfileComponent, DetailsComponent, ChangePasswordComponent],
   imports: [
     CommonModule,
     SharedModule,
@@ -53,7 +54,7 @@ import { SharedModule } from './../shared/shared.module';
     HttpClientModule,
     CKEditorModule,
     MatPaginatorModule,
-    MatTableModule,
+    MatTableModule
   ]
 })
 export class DefaultModule { }
